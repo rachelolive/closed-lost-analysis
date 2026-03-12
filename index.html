@@ -198,11 +198,10 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       <div class="tab" data-tab="deals">Lost: All Deals</div>
       <div class="tab" data-tab="owner">Lost: By Owner</div>
       <div class="tab" data-tab="source">Lost: By Source</div>
-      <div class="tab" data-tab="methodology">Methodology</div>
       <div class="tab" data-tab="renewals">Renewals</div>
       <div class="tab" data-tab="newbiz">New Business</div>
       <div class="tab" data-tab="upsell">Upsell</div>
-      <div class="tab" data-tab="raquel">Raquel's Thoughts</div>
+      <div class="tab" data-tab="methodology">Methodology</div>
     </div>
 
     <!-- ── LOST: OVERVIEW ── -->
@@ -348,8 +347,10 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
           <thead><tr>
             <th data-col="company">Deal</th>
             <th data-col="owner">Owner</th>
-            <th data-col="arrValue">ARR</th>
+            <th data-col="dealValueNum">Deal Value</th>
             <th data-col="month">Month</th>
+            <th data-col="source">Source</th>
+            <th data-col="winType">Win Type</th>
             <th>Why We Won</th>
           </tr></thead>
           <tbody id="body-newbiz"></tbody>
@@ -380,28 +381,6 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       </div>
     </div>
 
-    <!-- ── RAQUEL'S THOUGHTS ── -->
-    <div class="tab-panel" id="tab-raquel">
-      <div class="card" style="max-width:720px">
-        <div class="card-title">What's Driving Losses in 2026</div>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">1. Contact Unresponsive/Disengagement: This is the single biggest pattern (examples: Honeywell, Conde Nast, NextEra, P&G, CIBC, Johnson &amp; Johnson, TPG Telecom, Bloomreach, etc). Deals get to demo or discovery stage, then simply go dark.</p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">2. Pricing &amp; Budget Constraints: Grammarly, MSL Group, Multiverse, Appcharge, Brockwell, Turner &amp; Townsend, ING Group, Tata Communications, and others all cited budget cuts or competitive undercutting. Meltwater, Cision, Kantar, and Vuelio are consistently named as cheaper alternatives. The Darktrace loss is a good example — the contact switched to Claude (Anthropic's AI) to generate newsletters at 35p a run, bypassing the need for Signal entirely.</p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">3. Non-Core / Wrong ICP: ADVC, Making Science, Brunswick Advisory, Xylem Tree, Airbnb, SS&amp;C, SHL. Several of these came in through Marketing/Content and Marketing/Request a Demo channels, which is a direct flag for marketing's lead qualification process.</p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">4. Org Change &amp; Contact Departure: Take-Two, Wolters Kluwer, New York Mets, Western Union, Tyson Foods, both Deloitte South Africa entries — contacts leaving or restructures killing momentum. Hard to prevent, but symptomatic of single-threaded deals.</p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">5. Product/Content Gaps (~8%): Social listening gaps: Unilever (lost to Polecat, ~£280k ARR) and Decathlon Strategy both explicitly cited social firehose coverage as the dealbreaker. York Park and Brockwell both lost explicitly because Signal doesn't have a NewsCorp partnership. BCG Reg Risk and TCW Group lost because Signal couldn't provide full text for WSJ, Barron's and top publications. Methodology mismatch: Chevron, National Info Centre KSA, Syneos Health — Signal's approach didn't fit their risk frameworks.</p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8">6. Not in Buying Cycle/Timing: SC Johnson, FTI, Sun Life, Ferring, CVS Health, Weber Shandwick. These are timing losses, not rejection losses.</p>
-      </div>
-      <div class="card" style="max-width:720px">
-        <div class="card-title">What This Means for Us</div>
-        <ul style="font-size:14px;color:var(--text-mid);line-height:2;padding-left:18px">
-          <li>Lead quality is a problem: A significant number of non-core use cases (no PR function, wrong buying intent) are entering the funnel through marketing channels (particularly Request a Demo and Content/Webinar inbounds).</li>
-          <li>There is a nurture gap: "Contact Unresponsive" is the #1 loss reason. Many of these deals had genuine interest but fell into a black hole after the first demo. Marketing needs a structured post-demo nurture program — case studies, ROI content, and automated sequences.</li>
-          <li>Competitive messaging needs sharpening: Meltwater, Cision, Kantar, and Vuelio are winning on price. The Darktrace deal is a red flag: AI tools like Claude are now being used to solve the exact newsletter/monitoring use case Signal targets — at near-zero cost. This is an emerging competitive threat.</li>
-          <li>Re-engagement lists: Several accounts explicitly said "come back in Q2/Q3" or "revisit when budget opens": Jacobs Engineering, Sun Life, Appcharge, Decathlon Employer Branding, Ferring, Chevron, Brookfield, FTI. They're warm — they just need the right moment.</li>
-          <li>Timing problem: Many Q1 losses cite budget freezes and restructures. This is likely a macro Q1 pattern. Marketing should examine whether outreach cadences are calibrated to when buyers actually evaluate tools — for enterprise, that's typically Q3/Q4.</li>
-        </ul>
-      </div>
-    </div>
 
   </div>
   <div class="footer">Signal AI · #closedlost & #wins · auto-refreshes every 5 min</div>
@@ -742,8 +721,8 @@ function renderWinsTab(allWins, dealType, prefix) {
 
   document.getElementById(`kpis-${prefix}`).innerHTML = [
     { lbl:"Total Deals",  val:filtered.length,                       sub:activeMonths>0?`last ${activeMonths}M`:"all time", big:true, col:"#1E1D1A" },
-    { lbl:"Total ARR",    val:`${currency}${totalARR.toLocaleString("en-GB")}`,  sub:"sum of period",              col:"#2ECBA8" },
-    { lbl:"Avg ARR",      val:`${currency}${avgARR.toLocaleString("en-GB")}`,    sub:"per deal",                   col:"#2ECBA8" },
+    { lbl:dealType==="newbiz"?"Total Value":"Total ARR", val:`${currency}${totalARR.toLocaleString("en-GB")}`, sub:"sum of period", col:"#2ECBA8" },
+    { lbl:dealType==="newbiz"?"Avg Deal Value":"Avg ARR", val:`${currency}${avgARR.toLocaleString("en-GB")}`,  sub:"per deal",      col:"#2ECBA8" },
     { lbl:"Top Owner",    val:topOwner?.[0]||"—",                    sub:topOwner?`${topOwner[1]} deals`:"",      col:"#6B7FD4" },
   ].map(k=>`<div class="kpi" style="--kpi-col:${k.col}"><div class="klbl">${k.lbl}</div><div class="kval${k.big?" big":""}">${k.val}</div><div class="ksub">${k.sub}</div></div>`).join("");
 
@@ -762,13 +741,16 @@ function renderWinsTab(allWins, dealType, prefix) {
   if (countEl) countEl.textContent = `${total} deal${total!==1?"s":""}`;
   applySortHeaders(table, state.col, state.dir);
 
+  const isNewBiz = (dealType === "newbiz");
+  const colSpan = isNewBiz ? 7 : 5;
   tbody.innerHTML = slice.length ? slice.map(w => `<tr>
     <td>${hl(w.company||"—", searchQuery)}</td>
     <td style="white-space:nowrap">${hl(w.owner||"—", searchQuery)}</td>
-    <td class="arr-val">${hl(w.arr||"—", searchQuery)}</td>
+    <td class="arr-val">${hl(w.dealValue||w.arr||"—", searchQuery)}</td>
     <td style="white-space:nowrap">${hl(w.month||"—", searchQuery)}</td>
+    ${isNewBiz ? `<td style="white-space:nowrap">${hl(w.source||"—", searchQuery)}</td><td style="white-space:nowrap;font-size:11px">${hl(w.winType||"—", searchQuery)}</td>` : ""}
     <td class="wins-reason">${hl(w.reason||"—", searchQuery)}</td>
-  </tr>`).join("") : `<tr><td colspan="5" class="no-data">No deals found</td></tr>`;
+  </tr>`).join("") : `<tr><td colspan="${colSpan}" class="no-data">No deals found</td></tr>`;
 
   pagEl.innerHTML = renderPagination(state.page, totalPages, total, WINS_PER_PAGE, prefix);
   pagEl.querySelectorAll(".page-btn").forEach(btn => {
