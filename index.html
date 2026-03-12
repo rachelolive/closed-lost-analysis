@@ -23,16 +23,9 @@
   --radius:     12px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--soft-white);
-  color: var(--warm-black);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
+body { font-family: 'Poppins', sans-serif; background: var(--soft-white); color: var(--warm-black); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 #dash { max-width: 1080px; margin: 0 auto; padding: 40px 24px 64px; }
 
-/* ── Header ── */
 .hdr { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
 .hdr h1 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
 .hdr p  { font-size: 12px; color: var(--text-light); margin-top: 2px; font-weight: 400; }
@@ -40,43 +33,25 @@ body {
 .dot  { width: 7px; height: 7px; border-radius: 50%; background: var(--seafoam); animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-/* ── Search bar ── */
 .search-wrap { position: relative; margin-bottom: 16px; }
 .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-light); }
-#searchInput {
-  width: 100%; padding: 10px 40px 10px 40px;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500;
-  color: var(--warm-black); background: #fff;
-  border: 1px solid var(--border); border-radius: var(--radius);
-  outline: none; transition: border-color .15s, box-shadow .15s;
-}
+#searchInput { width: 100%; padding: 10px 40px; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; color: var(--warm-black); background: #fff; border: 1px solid var(--border); border-radius: var(--radius); outline: none; transition: border-color .15s, box-shadow .15s; }
 #searchInput::placeholder { color: var(--text-light); font-weight: 400; }
 #searchInput:focus { border-color: var(--neptune); box-shadow: 0 0 0 3px #6B7FD420; }
-.search-clear {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  background: none; border: none; cursor: pointer; color: var(--text-light);
-  font-size: 18px; line-height: 1; padding: 2px 5px; display: none; transition: color .15s;
-}
+.search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-light); font-size: 18px; line-height: 1; padding: 2px 5px; display: none; transition: color .15s; }
 .search-clear:hover { color: var(--warm-black); }
 .search-results-note { font-size: 11px; color: var(--text-mid); margin-top: 6px; font-style: italic; min-height: 16px; }
 
-/* ── Filter bar ── */
 .filter-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
 .filter-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .08em; margin-right: 4px; }
-.filter-pill {
-  padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--text-mid);
-  background: #fff; border: 1px solid var(--border); border-radius: 99px;
-  cursor: pointer; transition: all .15s; font-family: 'Poppins', sans-serif;
-}
+.filter-pill { padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--text-mid); background: #fff; border: 1px solid var(--border); border-radius: 99px; cursor: pointer; transition: all .15s; font-family: 'Poppins', sans-serif; }
 .filter-pill:hover { border-color: var(--neptune); color: var(--neptune); }
 .filter-pill.active { background: var(--warm-black); color: #fff; border-color: var(--warm-black); }
 .period-note { font-size: 11px; color: var(--text-light); margin-left: auto; font-style: italic; }
 
-/* ── Loading / Error ── */
 #loading { text-align:center; padding: 80px 20px; color: var(--text-light); font-size: 13px; font-weight:500; }
 #err { padding: 20px; color: var(--signal-red); background: #fff8f8; border: 1px solid #fdd; border-radius: var(--radius); font-size: 13px; line-height: 1.7; }
 
-/* ── KPIs ── */
 .kpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
 @media(max-width:680px){ .kpis { grid-template-columns: repeat(2,1fr); } }
 .kpi { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; border-top: 3px solid var(--kpi-col, var(--fog)); }
@@ -89,7 +64,6 @@ body {
 .kdelta.down { color: var(--seafoam); }
 .kdelta.flat { color: var(--text-light); }
 
-/* ── Tabs ── */
 .tabs { display: flex; gap: 2px; border-bottom: 2px solid var(--border); margin-bottom: 24px; flex-wrap: wrap; }
 .tab { padding: 10px 18px; font-size: 12px; font-weight: 600; color: var(--text-mid); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color .15s, border-color .15s; white-space: nowrap; }
 .tab:hover { color: var(--warm-black); }
@@ -97,21 +71,14 @@ body {
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-/* ── Cards ── */
 .card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 14px; }
 .card-title { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 20px; }
 .card-title span { font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 6px; color: var(--text-light); font-style: italic; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
 @media(max-width:680px){ .two { grid-template-columns: 1fr; } }
 
-/* ── Reason bars ── */
 .rbars { display: grid; gap: 13px; }
-.rrow {
-  display: grid; grid-template-columns: 154px 1fr 32px auto;
-  align-items: center; gap: 9px;
-  cursor: pointer; border-radius: 8px; padding: 6px; margin: -6px;
-  transition: background .12s;
-}
+.rrow { display: grid; grid-template-columns: 154px 1fr 32px auto; align-items: center; gap: 9px; cursor: pointer; border-radius: 8px; padding: 6px; margin: -6px; transition: background .12s; }
 .rrow:hover { background: var(--soft-white); }
 .rrow.selected { background: #6B7FD412; outline: 1.5px solid #6B7FD430; }
 .rname { font-size: 12px; color: var(--text-mid); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -124,10 +91,8 @@ body {
 .rdelta.down { background: #EDFBF7; color: #1A9E7A; }
 .rdelta.flat { background: var(--soft-white); color: var(--text-light); }
 .rdelta.na   { background: var(--soft-white); color: var(--text-light); }
-
 .click-hint { font-size: 10px; color: var(--text-light); font-style: italic; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
 
-/* ── Drill-down panel ── */
 #drillPanel { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; display: none; animation: slideDown .2s ease; }
 @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 .drill-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--soft-white); }
@@ -136,26 +101,20 @@ body {
 .drill-close { background: none; border: none; cursor: pointer; color: var(--text-light); font-size: 20px; line-height: 1; padding: 2px 6px; border-radius: 4px; transition: color .15s; font-family: 'Poppins', sans-serif; }
 .drill-close:hover { color: var(--warm-black); }
 
-/* ── Tables ── */
 .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
 .data-table thead tr { border-bottom: 1px solid var(--border); }
-.data-table thead th {
-  padding: 10px 16px; text-align: left; font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .07em; color: var(--text-light);
-  white-space: nowrap; cursor: pointer; user-select: none; transition: color .12s;
-}
+.data-table thead th { padding: 10px 16px; text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--text-light); white-space: nowrap; cursor: pointer; user-select: none; transition: color .12s; }
 .data-table thead th:hover { color: var(--warm-black); }
 .data-table thead th.sort-asc::after  { content: " ↑"; }
 .data-table thead th.sort-desc::after { content: " ↓"; }
 .data-table tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
 .data-table tbody tr:last-child { border-bottom: none; }
 .data-table tbody tr:hover { background: var(--soft-white); }
-.data-table tbody td { padding: 10px 16px; color: var(--text-mid); vertical-align: middle; }
+.data-table tbody td { padding: 10px 16px; color: var(--text-mid); vertical-align: top; }
 .data-table tbody td:first-child { color: var(--warm-black); font-weight: 600; }
 .cat-pill { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 99px; color: #fff; white-space: nowrap; }
 .no-data { text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 13px; }
 
-/* ── Pagination ── */
 .pagination { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-light); flex-wrap: wrap; gap: 8px; }
 .page-btns { display: flex; gap: 4px; }
 .page-btn { padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; background: #fff; cursor: pointer; font-size: 11px; font-weight: 600; color: var(--text-mid); font-family: 'Poppins', sans-serif; transition: all .12s; }
@@ -163,7 +122,6 @@ body {
 .page-btn:disabled { opacity: .4; cursor: default; }
 .page-btn.active { background: var(--warm-black); color: #fff; border-color: var(--warm-black); }
 
-/* ── Summary tables ── */
 .summary-table { width: 100%; border-collapse: collapse; font-size: 12px; }
 .summary-table thead th { padding: 10px 16px; text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--text-light); border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; transition: color .12s; }
 .summary-table thead th:hover { color: var(--warm-black); }
@@ -180,33 +138,24 @@ body {
 .count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 20px; padding: 0 7px; font-size: 11px; font-weight: 700; border-radius: 99px; background: var(--soft-white); color: var(--warm-black); border: 1px solid var(--border); }
 .top-cats { display: flex; flex-wrap: wrap; gap: 4px; }
 
-/* ── Methodology tab ── */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media(max-width:680px){ .method-grid { grid-template-columns: 1fr; } }
-.method-card {
-  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-  border-left: 4px solid var(--mc-col, var(--fog));
-  padding: 20px 22px; transition: transform .15s;
-}
+.method-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); border-left: 4px solid var(--mc-col, var(--fog)); padding: 20px 22px; transition: transform .15s; }
 .method-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
-.method-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.method-cat-name { font-size: 14px; font-weight: 700; color: var(--warm-black); line-height: 1.3; }
-.method-badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; color: #fff; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.method-cat-name { font-size: 14px; font-weight: 700; color: var(--warm-black); line-height: 1.3; margin-bottom: 6px; }
 .method-desc { font-size: 12px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
-.method-signals { margin-top: 10px; }
 .method-signals-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 7px; }
 .signal-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .signal-tag { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: var(--soft-white); color: var(--text-mid); border: 1px solid var(--border); font-weight: 500; }
 
-/* ── Search highlight ── */
-mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px; }
+/* Wins tab */
+.wins-reason { font-size: 12px; color: var(--text-mid); line-height: 1.7; max-width: 480px; white-space: normal; }
+.arr-val { color: var(--seafoam); font-weight: 700; white-space: nowrap; }
 
-/* ── Comp legend ── */
+mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px; }
 .comp-legend { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
 .comp-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-light); }
 .swatch { width: 10px; height: 10px; border-radius: 2px; }
-
-/* ── Footer ── */
 .footer { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 36px; }
 </style>
 </head>
@@ -215,8 +164,8 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
 
   <div class="hdr">
     <div>
-      <h1>Closed / Lost Analysis</h1>
-      <p>Live from Slack #closedlost</p>
+      <h1>Signal AI · Sales Dashboard</h1>
+      <p>Live from Slack #closedlost & #wins</p>
     </div>
     <div class="live"><span class="dot"></span><span id="ts">Loading…</span></div>
   </div>
@@ -226,7 +175,6 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
 
   <div id="content" style="display:none">
 
-    <!-- Search -->
     <div class="search-wrap">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="searchInput" placeholder="Search companies, owners, sources, categories, notes…" autocomplete="off">
@@ -234,7 +182,6 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
     </div>
     <div class="search-results-note" id="searchNote"></div>
 
-    <!-- Filters -->
     <div class="filter-bar">
       <span class="filter-label">Period</span>
       <button class="filter-pill" data-months="3">Last 3M</button>
@@ -247,15 +194,18 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
     <div class="kpis" id="kpis"></div>
 
     <div class="tabs">
-      <div class="tab active" data-tab="data">Data</div>
-      <div class="tab" data-tab="deals">All Deals</div>
-      <div class="tab" data-tab="owner">By Owner</div>
-      <div class="tab" data-tab="source">By Source</div>
+      <div class="tab active" data-tab="data">Lost: Overview</div>
+      <div class="tab" data-tab="deals">Lost: All Deals</div>
+      <div class="tab" data-tab="owner">Lost: By Owner</div>
+      <div class="tab" data-tab="source">Lost: By Source</div>
       <div class="tab" data-tab="methodology">Methodology</div>
+      <div class="tab" data-tab="renewals">Renewals</div>
+      <div class="tab" data-tab="newbiz">New Business</div>
+      <div class="tab" data-tab="upsell">Upsell</div>
       <div class="tab" data-tab="raquel">Raquel's Thoughts</div>
     </div>
 
-    <!-- ── DATA TAB ── -->
+    <!-- ── LOST: OVERVIEW ── -->
     <div class="tab-panel active" id="tab-data">
       <div class="two">
         <div class="card">
@@ -277,13 +227,9 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
         </div>
       </div>
 
-      <!-- Drill-down panel -->
       <div id="drillPanel">
         <div class="drill-header">
-          <h3>
-            <span id="drillCatBadge" class="drill-cat-badge"></span>
-            <span id="drillTitle"></span>
-          </h3>
+          <h3><span id="drillCatBadge" class="drill-cat-badge"></span><span id="drillTitle"></span></h3>
           <button class="drill-close" id="drillClose">×</button>
         </div>
         <table class="data-table" id="drillTable">
@@ -305,7 +251,7 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       </div>
     </div>
 
-    <!-- ── ALL DEALS TAB ── -->
+    <!-- ── LOST: ALL DEALS ── -->
     <div class="tab-panel" id="tab-deals">
       <div class="card" style="padding:0;overflow:hidden">
         <div style="padding:20px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
@@ -329,12 +275,10 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       </div>
     </div>
 
-    <!-- ── BY OWNER TAB ── -->
+    <!-- ── LOST: BY OWNER ── -->
     <div class="tab-panel" id="tab-owner">
       <div class="card" style="padding:0;overflow:hidden">
-        <div style="padding:20px 20px 16px">
-          <div class="card-title" style="margin-bottom:0">Closed / Lost by Owner</div>
-        </div>
+        <div style="padding:20px 20px 16px"><div class="card-title" style="margin-bottom:0">Closed / Lost by Owner</div></div>
         <table class="summary-table" id="ownerTable">
           <thead><tr>
             <th data-col="name">Owner</th>
@@ -348,12 +292,10 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       </div>
     </div>
 
-    <!-- ── BY SOURCE TAB ── -->
+    <!-- ── LOST: BY SOURCE ── -->
     <div class="tab-panel" id="tab-source">
       <div class="card" style="padding:0;overflow:hidden">
-        <div style="padding:20px 20px 16px">
-          <div class="card-title" style="margin-bottom:0">Closed / Lost by Lead Source</div>
-        </div>
+        <div style="padding:20px 20px 16px"><div class="card-title" style="margin-bottom:0">Closed / Lost by Lead Source</div></div>
         <table class="summary-table" id="sourceTable">
           <thead><tr>
             <th data-col="name">Source</th>
@@ -367,33 +309,87 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       </div>
     </div>
 
-    <!-- ── METHODOLOGY TAB ── -->
+    <!-- ── METHODOLOGY ── -->
     <div class="tab-panel" id="tab-methodology">
       <div class="method-grid" id="methodGrid"></div>
     </div>
 
-    <!-- ── RAQUEL'S THOUGHTS TAB ── -->
+    <!-- ── RENEWALS ── -->
+    <div class="tab-panel" id="tab-renewals">
+      <div class="kpis" id="kpis-renewals"></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:20px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div class="card-title" style="margin-bottom:0">Renewals</div>
+          <div style="font-size:11px;color:var(--text-light)" id="count-renewals"></div>
+        </div>
+        <table class="data-table" id="table-renewals">
+          <thead><tr>
+            <th data-col="company">Deal</th>
+            <th data-col="owner">Owner</th>
+            <th data-col="arrValue">ARR</th>
+            <th data-col="month">Month</th>
+            <th>Reason for Renewing</th>
+          </tr></thead>
+          <tbody id="body-renewals"></tbody>
+        </table>
+        <div class="pagination" id="pag-renewals"></div>
+      </div>
+    </div>
+
+    <!-- ── NEW BUSINESS ── -->
+    <div class="tab-panel" id="tab-newbiz">
+      <div class="kpis" id="kpis-newbiz"></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:20px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div class="card-title" style="margin-bottom:0">New Business</div>
+          <div style="font-size:11px;color:var(--text-light)" id="count-newbiz"></div>
+        </div>
+        <table class="data-table" id="table-newbiz">
+          <thead><tr>
+            <th data-col="company">Deal</th>
+            <th data-col="owner">Owner</th>
+            <th data-col="arrValue">ARR</th>
+            <th data-col="month">Month</th>
+            <th>Why We Won</th>
+          </tr></thead>
+          <tbody id="body-newbiz"></tbody>
+        </table>
+        <div class="pagination" id="pag-newbiz"></div>
+      </div>
+    </div>
+
+    <!-- ── UPSELL ── -->
+    <div class="tab-panel" id="tab-upsell">
+      <div class="kpis" id="kpis-upsell"></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:20px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div class="card-title" style="margin-bottom:0">Upsell</div>
+          <div style="font-size:11px;color:var(--text-light)" id="count-upsell"></div>
+        </div>
+        <table class="data-table" id="table-upsell">
+          <thead><tr>
+            <th data-col="company">Deal</th>
+            <th data-col="owner">Owner</th>
+            <th data-col="arrValue">ARR</th>
+            <th data-col="month">Month</th>
+            <th>Reason for Upsell</th>
+          </tr></thead>
+          <tbody id="body-upsell"></tbody>
+        </table>
+        <div class="pagination" id="pag-upsell"></div>
+      </div>
+    </div>
+
+    <!-- ── RAQUEL'S THOUGHTS ── -->
     <div class="tab-panel" id="tab-raquel">
       <div class="card" style="max-width:720px">
         <div class="card-title">What's Driving Losses in 2026</div>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">
-          1. Contact Unresponsive/Disengagement: This is the single biggest pattern (examples: Honeywell, Conde Nast, NextEra, P&G, CIBC, Johnson &amp; Johnson, TPG Telecom, Bloomreach, etc). Deals get to demo or discovery stage, then simply go dark.
-        </p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">
-          2. Pricing &amp; Budget Constraints: Grammarly, MSL Group, Multiverse, Appcharge, Brockwell, Turner &amp; Townsend, ING Group, Tata Communications, and others all cited budget cuts or competitive undercutting. Meltwater, Cision, Kantar, and Vuelio are consistently named as cheaper alternatives. The Darktrace loss is a good example — the contact switched to Claude (Anthropic's AI) to generate newsletters at 35p a run, bypassing the need for Signal entirely.
-        </p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">
-          3. Non-Core / Wrong ICP: ADVC, Making Science, Brunswick Advisory, Xylem Tree, Airbnb, SS&amp;C, SHL. Several of these came in through Marketing/Content and Marketing/Request a Demo channels, which is a direct flag for marketing's lead qualification process.
-        </p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">
-          4. Org Change &amp; Contact Departure: Take-Two, Wolters Kluwer, New York Mets, Western Union, Tyson Foods, both Deloitte South Africa entries — contacts leaving or restructures killing momentum. Hard to prevent, but symptomatic of single-threaded deals.
-        </p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">
-          5. Product/Content Gaps (~8%): Social listening gaps: Unilever (lost to Polecat, ~£280k ARR) and Decathlon Strategy both explicitly cited social firehose coverage as the dealbreaker. York Park and Brockwell both lost explicitly because Signal doesn't have a NewsCorp partnership. BCG Reg Risk and TCW Group lost because Signal couldn't provide full text for WSJ, Barron's and top publications. Methodology mismatch: Chevron, National Info Centre KSA, Syneos Health — Signal's approach didn't fit their risk frameworks.
-        </p>
-        <p style="font-size:14px;color:var(--text-mid);line-height:1.8">
-          6. Not in Buying Cycle/Timing: SC Johnson, FTI, Sun Life, Ferring, CVS Health, Weber Shandwick. These are timing losses, not rejection losses.
-        </p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">1. Contact Unresponsive/Disengagement: This is the single biggest pattern (examples: Honeywell, Conde Nast, NextEra, P&G, CIBC, Johnson &amp; Johnson, TPG Telecom, Bloomreach, etc). Deals get to demo or discovery stage, then simply go dark.</p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">2. Pricing &amp; Budget Constraints: Grammarly, MSL Group, Multiverse, Appcharge, Brockwell, Turner &amp; Townsend, ING Group, Tata Communications, and others all cited budget cuts or competitive undercutting. Meltwater, Cision, Kantar, and Vuelio are consistently named as cheaper alternatives. The Darktrace loss is a good example — the contact switched to Claude (Anthropic's AI) to generate newsletters at 35p a run, bypassing the need for Signal entirely.</p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">3. Non-Core / Wrong ICP: ADVC, Making Science, Brunswick Advisory, Xylem Tree, Airbnb, SS&amp;C, SHL. Several of these came in through Marketing/Content and Marketing/Request a Demo channels, which is a direct flag for marketing's lead qualification process.</p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">4. Org Change &amp; Contact Departure: Take-Two, Wolters Kluwer, New York Mets, Western Union, Tyson Foods, both Deloitte South Africa entries — contacts leaving or restructures killing momentum. Hard to prevent, but symptomatic of single-threaded deals.</p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">5. Product/Content Gaps (~8%): Social listening gaps: Unilever (lost to Polecat, ~£280k ARR) and Decathlon Strategy both explicitly cited social firehose coverage as the dealbreaker. York Park and Brockwell both lost explicitly because Signal doesn't have a NewsCorp partnership. BCG Reg Risk and TCW Group lost because Signal couldn't provide full text for WSJ, Barron's and top publications. Methodology mismatch: Chevron, National Info Centre KSA, Syneos Health — Signal's approach didn't fit their risk frameworks.</p>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8">6. Not in Buying Cycle/Timing: SC Johnson, FTI, Sun Life, Ferring, CVS Health, Weber Shandwick. These are timing losses, not rejection losses.</p>
       </div>
       <div class="card" style="max-width:720px">
         <div class="card-title">What This Means for Us</div>
@@ -408,8 +404,7 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
     </div>
 
   </div>
-
-  <div class="footer">Signal AI · #closedlost · auto-refreshes every 5 min</div>
+  <div class="footer">Signal AI · #closedlost & #wins · auto-refreshes every 5 min</div>
 </div>
 
 <script>
@@ -420,7 +415,6 @@ const COLOURS = {
   "Pricing":                "#F03545",
   "Use Case Mismatch":      "#F5852A",
   "Contact Unresponsive":   "#6B7FD4",
-  "Engagement":             "#8B52C8",
   "Not in Buying Cycle":    "#2ECBA8",
   "Org Change":             "#F5C642",
   "Content / Product Gaps": "#F07B75",
@@ -429,62 +423,19 @@ const COLOURS = {
   "Other":                  "#C8C4BD",
 };
 
-// ── Methodology definitions ────────────────────────────────────────────────────
 const METHODOLOGY = [
-  {
-    cat: "Contact Unresponsive",
-    desc: "The deal had active engagement — typically a demo or discovery call — but the prospect stopped responding to follow-up. No formal rejection was given; the deal simply went dark. This is distinct from 'Not in Buying Cycle' in that there was genuine initial interest and motion.",
-    signals: ["Ghosted after demo", "No reply to 3+ follow-ups", "Went dark post-discovery", "Unresponsive to emails & calls"],
-  },
-  {
-    cat: "Pricing",
-    desc: "The deal was lost primarily because Signal's price exceeded the prospect's budget, or a competitor offered comparable functionality at a materially lower price point. Includes cases where procurement blocked a deal due to cost, and cases where budget was cut mid-cycle.",
-    signals: ["Went with cheaper competitor", "Budget cut / frozen", "Couldn't justify ROI at price", "Procurement blocked", "Competitor undercutting"],
-  },
-  {
-    cat: "Use Case Mismatch",
-    desc: "The prospect's core use case doesn't align with what Signal is designed to do. This typically applies to accounts that came in through broad marketing channels with adjacent but non-core needs — e.g. pure content marketing, internal comms, or social media management — rather than media intelligence and earned media tracking.",
-    signals: ["No PR/comms function", "Wrong buying persona", "Social-only use case", "Internal comms need", "Marketing content only"],
-  },
-  {
-    cat: "Not in Buying Cycle",
-    desc: "The prospect has genuine interest in Signal and recognises the value, but they are not in an active buying cycle — typically because a contract with a current vendor hasn't expired, Q1 budget planning hasn't completed, or they explicitly said to re-engage in a future quarter. These are timing losses, not rejections.",
-    signals: ["Contract not up until Q3/Q4", "Budget not allocated yet", "Come back in 6 months", "In planning mode", "Board hasn't approved"],
-  },
-  {
-    cat: "Org Change",
-    desc: "The deal was disrupted by an organisational event that was out of the prospect's hands — a restructure, acquisition, budget reallocation, or the departure of the champion contact. No product or price objection was raised; the deal simply lost its internal sponsor or momentum.",
-    signals: ["Contact left the company", "Team restructure", "Company acquired/merged", "New leadership froze spend", "Champion moved roles"],
-  },
-  {
-    cat: "Content / Product Gaps",
-    desc: "Signal's content coverage, data partnerships, or product capabilities fell short of what the prospect required. Common gaps include: social media firehose data, specific publisher partnerships (e.g. NewsCorp, full-text WSJ/Barron's), or a methodology mismatch where Signal's risk or relevance scoring didn't fit the prospect's framework.",
-    signals: ["Missing social firehose", "No NewsCorp/WSJ full text", "Methodology mismatch", "Coverage gap in region/topic", "API limitations"],
-  },
-  {
-    cat: "Engagement",
-    desc: "The prospect showed interest at the top of the funnel but never developed into a qualified opportunity with active two-way engagement. Typically these are deals where the prospect attended a webinar, downloaded content, or requested a demo but never committed to a real discovery process. Different from 'Contact Unresponsive' in that there was never a substantive conversation.",
-    signals: ["Never progressed past MQL", "Attended webinar, no follow-through", "Demo no-show", "Low intent from the start", "Inbound with no real need"],
-  },
-  {
-    cat: "Platform / Fit",
-    desc: "The prospect evaluated Signal against competitors and chose an alternative based on platform capabilities, UX, integrations, or technical fit — not primarily on price. This includes cases where an incumbent vendor retained the account because switching costs were too high.",
-    signals: ["Chose competitor on features", "Integration requirements unmet", "UI/UX preference for competitor", "Staying with incumbent", "Technical requirements gap"],
-  },
-  {
-    cat: "Agency / External",
-    desc: "The deal was lost due to a decision made at the agency, holding company, or parent organisation level, rather than by the direct contact. This includes cases where a preferred vendor was mandated by the holding group, or where an agency relationship precluded a direct Signal contract.",
-    signals: ["Holding group mandated vendor", "Agency preferred list", "Parent company decision", "Procurement preferred supplier list", "Agency managed relationship"],
-  },
-  {
-    cat: "Other",
-    desc: "Used sparingly for deals that genuinely don't fit any of the above categories, or where insufficient information was logged to classify accurately. Over-use of 'Other' is a data quality flag — if this category is frequently used by a rep, it should be reviewed in the monthly pipeline call.",
-    signals: ["Unclear reason given", "No notes logged", "Doesn't fit standard taxonomy", "Personal/relationship factor", "One-off circumstance"],
-  },
+  { cat:"Contact Unresponsive", desc:"The deal had active engagement — typically a demo or discovery call — but the prospect stopped responding to follow-up. Also covers deals where the prospect showed early interest but never developed into a qualified opportunity with real two-way engagement (e.g. attended a webinar or requested a demo but never committed to a discovery process).", signals:["Ghosted after demo","No reply to 3+ follow-ups","Went dark post-discovery","Unresponsive to emails & calls","Demo no-show","Never progressed past MQL","Low intent from the start"] },
+  { cat:"Pricing", desc:"The deal was lost primarily because Signal's price exceeded the prospect's budget, or a competitor offered comparable functionality at a materially lower price point. Includes cases where procurement blocked a deal due to cost, and cases where budget was cut mid-cycle.", signals:["Went with cheaper competitor","Budget cut / frozen","Couldn't justify ROI at price","Procurement blocked","Competitor undercutting"] },
+  { cat:"Use Case Mismatch", desc:"The prospect's core use case doesn't align with what Signal is designed to do. This typically applies to accounts that came in through broad marketing channels with adjacent but non-core needs — e.g. pure content marketing, internal comms, or social media management — rather than media intelligence and earned media tracking.", signals:["No PR/comms function","Wrong buying persona","Social-only use case","Internal comms need","Marketing content only"] },
+  { cat:"Not in Buying Cycle", desc:"The prospect has genuine interest in Signal and recognises the value, but they are not in an active buying cycle — typically because a contract with a current vendor hasn't expired, Q1 budget planning hasn't completed, or they explicitly said to re-engage in a future quarter. These are timing losses, not rejections.", signals:["Contract not up until Q3/Q4","Budget not allocated yet","Come back in 6 months","In planning mode","Board hasn't approved"] },
+  { cat:"Org Change", desc:"The deal was disrupted by an organisational event that was out of the prospect's hands — a restructure, acquisition, budget reallocation, or the departure of the champion contact. No product or price objection was raised; the deal simply lost its internal sponsor or momentum.", signals:["Contact left the company","Team restructure","Company acquired/merged","New leadership froze spend","Champion moved roles"] },
+  { cat:"Content / Product Gaps", desc:"Signal's content coverage, data partnerships, or product capabilities fell short of what the prospect required. Common gaps include: social media firehose data, specific publisher partnerships (e.g. NewsCorp, full-text WSJ/Barron's), or a methodology mismatch where Signal's risk or relevance scoring didn't fit the prospect's framework.", signals:["Missing social firehose","No NewsCorp/WSJ full text","Methodology mismatch","Coverage gap in region/topic","API limitations"] },
+  { cat:"Platform / Fit", desc:"The prospect evaluated Signal against competitors and chose an alternative based on platform capabilities, UX, integrations, or technical fit — not primarily on price. This includes cases where an incumbent vendor retained the account because switching costs were too high.", signals:["Chose competitor on features","Integration requirements unmet","UI/UX preference for competitor","Staying with incumbent","Technical requirements gap"] },
+  { cat:"Agency / External", desc:"The deal was lost due to a decision made at the agency, holding company, or parent organisation level, rather than by the direct contact. This includes cases where a preferred vendor was mandated by the holding group, or where an agency relationship precluded a direct Signal contract.", signals:["Holding group mandated vendor","Agency preferred list","Parent company decision","Procurement preferred supplier list","Agency managed relationship"] },
+  { cat:"Other", desc:"Used sparingly for deals that genuinely don't fit any of the above categories, or where insufficient information was logged to classify accurately. Over-use of 'Other' is a data quality flag — if this category is frequently used by a rep, it should be reviewed in the monthly pipeline call.", signals:["Unclear reason given","No notes logged","Doesn't fit standard taxonomy","Personal/relationship factor","One-off circumstance"] },
 ];
 
 const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
 Chart.defaults.font.family = "'Poppins', sans-serif";
 Chart.defaults.color = "#A8A49E";
 
@@ -501,7 +452,15 @@ const DEALS_PER_PAGE = 20;
 let ownerSortCol = "count", ownerSortDir = "desc";
 let sourceSortCol = "count", sourceSortDir = "desc";
 
-// ── Month helpers ──────────────────────────────────────────────────────────────
+// Wins sort/page state per tab
+const WINS_PER_PAGE = 20;
+const winsState = {
+  renewals: { col: "month", dir: "desc", page: 1 },
+  newbiz:   { col: "month", dir: "desc", page: 1 },
+  upsell:   { col: "month", dir: "desc", page: 1 },
+};
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function monthToNum(str) {
   const [m, y] = (str || "").split(" ");
   const idx = MO.indexOf(m);
@@ -509,28 +468,42 @@ function monthToNum(str) {
   return parseInt(y) * 12 + idx;
 }
 function numToMonth(n) { return MO[n % 12] + " " + Math.floor(n / 12); }
-function filterOpps(opps, fromNum, toNum) {
-  return (opps || []).filter(o => { const n = monthToNum(o.month); return n >= fromNum && n <= toNum; });
+
+function filterByPeriod(items, activeMonths) {
+  const nums = items.map(o => monthToNum(o.month)).filter(n => n > 0);
+  if (!nums.length) return items;
+  const maxN = Math.max(...nums);
+  const minN = Math.min(...nums);
+  const fromN = activeMonths === 0 ? minN : maxN - activeMonths + 1;
+  return items.filter(o => { const n = monthToNum(o.month); return n >= fromN && n <= maxN; });
 }
+
 function countCats(opps) {
   const c = {}; opps.forEach(o => { if (o.cat) c[o.cat] = (c[o.cat] || 0) + 1; }); return c;
 }
 function countMonths(opps) {
   const c = {}; opps.forEach(o => { if (o.month && o.month !== "Unknown") c[o.month] = (c[o.month] || 0) + 1; }); return c;
 }
-
-// ── Search ─────────────────────────────────────────────────────────────────────
 function oppMatchesSearch(o, q) {
   if (!q) return true;
   const lq = q.toLowerCase();
   return [o.company, o.cat, o.owner, o.source, o.notes, o.month].some(v => (v||"").toLowerCase().includes(lq));
 }
+function winMatchesSearch(w, q) {
+  if (!q) return true;
+  const lq = q.toLowerCase();
+  return [w.company, w.dealTitle, w.owner, w.arr, w.month, w.reason, w.products].some(v => (v||"").toLowerCase().includes(lq));
+}
 function hl(text, q) {
   if (!q || !text) return text || "";
   return String(text).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'), '<mark>$1</mark>');
 }
+function fmtCurrency(val, currency) {
+  if (!val && val !== 0) return "—";
+  return (currency || "GBP") + Math.round(val).toLocaleString("en-GB");
+}
 
-// ── Tabs ───────────────────────────────────────────────────────────────────────
+// ── Tabs ──────────────────────────────────────────────────────────────────────
 document.querySelectorAll(".tab").forEach(t => {
   t.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
@@ -540,24 +513,26 @@ document.querySelectorAll(".tab").forEach(t => {
   });
 });
 
-// ── Filters ────────────────────────────────────────────────────────────────────
+// ── Filters ───────────────────────────────────────────────────────────────────
 document.querySelectorAll(".filter-pill").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filter-pill").forEach(x => x.classList.remove("active"));
     btn.classList.add("active");
     activeMonths = parseInt(btn.dataset.months);
     selectedCat = null;
+    Object.values(winsState).forEach(s => s.page = 1);
     if (allData) renderView(allData);
   });
 });
 
-// ── Search input ───────────────────────────────────────────────────────────────
+// ── Search ────────────────────────────────────────────────────────────────────
 const searchInput = document.getElementById("searchInput");
 const searchClear = document.getElementById("searchClear");
 searchInput.addEventListener("input", () => {
   searchQuery = searchInput.value.trim();
   searchClear.style.display = searchQuery ? "block" : "none";
   dealsPage = 1; drillPage = 1;
+  Object.values(winsState).forEach(s => s.page = 1);
   if (allData) renderView(allData);
 });
 searchClear.addEventListener("click", () => {
@@ -565,14 +540,14 @@ searchClear.addEventListener("click", () => {
   searchClear.style.display = "none";
   document.getElementById("searchNote").textContent = "";
   dealsPage = 1; drillPage = 1;
+  Object.values(winsState).forEach(s => s.page = 1);
   if (allData) renderView(allData);
 });
 
-// ── Chart tooltip / scale styles ──────────────────────────────────────────────
 const tip = { backgroundColor:"#fff", borderColor:"#E8E5DF", borderWidth:1, titleColor:"#1E1D1A", bodyColor:"#6B6860", padding:10, titleFont:{family:"'Poppins',sans-serif",weight:"600"}, bodyFont:{family:"'Poppins',sans-serif"} };
-const sc = { x:{ grid:{color:"#F3F0EB"}, ticks:{font:{size:11}}, border:{color:"#E8E5DF"} }, y:{ grid:{color:"#F3F0EB"}, ticks:{font:{size:11},precision:0}, border:{color:"#E8E5DF"} } };
+const sc  = { x:{ grid:{color:"#F3F0EB"}, ticks:{font:{size:11}}, border:{color:"#E8E5DF"} }, y:{ grid:{color:"#F3F0EB"}, ticks:{font:{size:11},precision:0}, border:{color:"#E8E5DF"} } };
 
-// ── Sort helpers ───────────────────────────────────────────────────────────────
+// ── Sort ──────────────────────────────────────────────────────────────────────
 function applySortHeaders(tableEl, col, dir) {
   tableEl.querySelectorAll("thead th").forEach(th => {
     th.classList.remove("sort-asc","sort-desc");
@@ -592,11 +567,11 @@ function sortRows(rows, col, dir) {
   });
 }
 
-// ── Pagination helpers ─────────────────────────────────────────────────────────
+// ── Pagination ────────────────────────────────────────────────────────────────
 function renderPagination(page, totalPages, total, perPage, id) {
   const start = total === 0 ? 0 : (page-1)*perPage+1;
-  const end = Math.min(page*perPage, total);
-  const nums = [];
+  const end   = Math.min(page*perPage, total);
+  const nums  = [];
   for (let p = Math.max(1,page-2); p <= Math.min(totalPages,page+2); p++) nums.push(p);
   return `<span>${total===0?"No results":`${start}–${end} of ${total}`}</span>
     <div class="page-btns">
@@ -621,7 +596,7 @@ function bindPagination(pagEl, id) {
   });
 }
 
-// ── Drill table ────────────────────────────────────────────────────────────────
+// ── Drill table ───────────────────────────────────────────────────────────────
 function renderDrillTable(opps) {
   const tbody = document.getElementById("drillBody");
   const pagEl = document.getElementById("drillPagination");
@@ -651,7 +626,7 @@ function renderDrillTable(opps) {
   });
 }
 
-// ── Deals table ────────────────────────────────────────────────────────────────
+// ── All deals table ───────────────────────────────────────────────────────────
 function renderDealsTable(opps) {
   const tbody = document.getElementById("dealsBody");
   const pagEl = document.getElementById("dealsPagination");
@@ -687,7 +662,7 @@ function renderDealsTable(opps) {
   });
 }
 
-// ── Summary table (owner / source) ────────────────────────────────────────────
+// ── Summary tables (owner / source) ──────────────────────────────────────────
 function renderSummaryTable(opps, groupField, bodyId, tableId, sortState) {
   const tbody = document.getElementById(bodyId);
   const table = document.getElementById(tableId);
@@ -726,25 +701,96 @@ function renderSummaryTable(opps, groupField, bodyId, tableId, sortState) {
   });
 }
 
-// ── Methodology cards ─────────────────────────────────────────────────────────
+// ── Methodology ───────────────────────────────────────────────────────────────
 function renderMethodology() {
   document.getElementById("methodGrid").innerHTML = METHODOLOGY.map(m => {
     const col = COLOURS[m.cat]||"#C8C4BD";
     return `<div class="method-card" style="--mc-col:${col}">
-      <div class="method-card-header">
-        <div class="method-cat-name">${m.cat}</div>
-        <span class="method-badge" style="background:${col}">●</span>
-      </div>
+      <div class="method-cat-name">${m.cat}</div>
       <p class="method-desc">${m.desc}</p>
-      <div class="method-signals">
-        <div class="method-signals-title">Common signals</div>
-        <div class="signal-tags">${m.signals.map(s=>`<span class="signal-tag">${s}</span>`).join("")}</div>
-      </div>
+      <div class="method-signals-title">Common signals</div>
+      <div class="signal-tags">${m.signals.map(s=>`<span class="signal-tag">${s}</span>`).join("")}</div>
     </div>`;
   }).join("");
 }
 
-// ── Open drill-down ────────────────────────────────────────────────────────────
+// ── Wins tabs ─────────────────────────────────────────────────────────────────
+function renderWinsTab(allWins, dealType, prefix) {
+  const state = winsState[prefix];
+
+  // Filter by type then by period
+  const typeWins = allWins.filter(w => w.dealType === dealType);
+  const periodWins = filterByPeriod(typeWins, activeMonths);
+
+  // Apply search
+  const filtered = searchQuery
+    ? periodWins.filter(w => winMatchesSearch(w, searchQuery))
+    : periodWins;
+
+  // KPIs
+  const totalARR  = filtered.reduce((s, w) => s + (w.arrValue || 0), 0);
+  const avgARR    = filtered.length ? Math.round(totalARR / filtered.length) : 0;
+  const currency  = filtered.find(w => w.arrCurrency)?.arrCurrency || "GBP";
+  const monthCts  = {};
+  filtered.forEach(w => { if (w.month) monthCts[w.month] = (monthCts[w.month] || 0) + 1; });
+  const latestM   = Object.keys(monthCts).sort((a,b) => monthToNum(b)-monthToNum(a))[0] || "—";
+
+  // Top owner
+  const ownerCts = {};
+  filtered.forEach(w => { if (w.owner) ownerCts[w.owner] = (ownerCts[w.owner] || 0) + 1; });
+  const topOwner = Object.entries(ownerCts).sort((a,b)=>b[1]-a[1])[0];
+
+  document.getElementById(`kpis-${prefix}`).innerHTML = [
+    { lbl:"Total Deals",  val:filtered.length,                       sub:activeMonths>0?`last ${activeMonths}M`:"all time", big:true, col:"#1E1D1A" },
+    { lbl:"Total ARR",    val:`${currency}${totalARR.toLocaleString("en-GB")}`,  sub:"sum of period",              col:"#2ECBA8" },
+    { lbl:"Avg ARR",      val:`${currency}${avgARR.toLocaleString("en-GB")}`,    sub:"per deal",                   col:"#2ECBA8" },
+    { lbl:"Top Owner",    val:topOwner?.[0]||"—",                    sub:topOwner?`${topOwner[1]} deals`:"",      col:"#6B7FD4" },
+  ].map(k=>`<div class="kpi" style="--kpi-col:${k.col}"><div class="klbl">${k.lbl}</div><div class="kval${k.big?" big":""}">${k.val}</div><div class="ksub">${k.sub}</div></div>`).join("");
+
+  // Table
+  const table   = document.getElementById(`table-${prefix}`);
+  const tbody   = document.getElementById(`body-${prefix}`);
+  const pagEl   = document.getElementById(`pag-${prefix}`);
+  const countEl = document.getElementById(`count-${prefix}`);
+
+  const sorted = sortRows(filtered.map(w => ({...w, company: w.dealTitle || w.company})), state.col, state.dir);
+  const total = sorted.length;
+  const totalPages = Math.max(1, Math.ceil(total / WINS_PER_PAGE));
+  state.page = Math.min(state.page, totalPages);
+  const slice = sorted.slice((state.page-1)*WINS_PER_PAGE, state.page*WINS_PER_PAGE);
+
+  if (countEl) countEl.textContent = `${total} deal${total!==1?"s":""}`;
+  applySortHeaders(table, state.col, state.dir);
+
+  tbody.innerHTML = slice.length ? slice.map(w => `<tr>
+    <td>${hl(w.company||"—", searchQuery)}</td>
+    <td style="white-space:nowrap">${hl(w.owner||"—", searchQuery)}</td>
+    <td class="arr-val">${hl(w.arr||"—", searchQuery)}</td>
+    <td style="white-space:nowrap">${hl(w.month||"—", searchQuery)}</td>
+    <td class="wins-reason">${hl(w.reason||"—", searchQuery)}</td>
+  </tr>`).join("") : `<tr><td colspan="5" class="no-data">No deals found</td></tr>`;
+
+  pagEl.innerHTML = renderPagination(state.page, totalPages, total, WINS_PER_PAGE, prefix);
+  pagEl.querySelectorAll(".page-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      const pg = btn.dataset.pg;
+      if (pg==="prev") state.page--; else if (pg==="next") state.page++; else state.page=parseInt(pg);
+      renderWinsTab(allWins, dealType, prefix);
+    });
+  });
+
+  table.querySelectorAll("thead th[data-col]").forEach(th => {
+    th.onclick = () => {
+      if (state.col===th.dataset.col) state.dir=state.dir==="asc"?"desc":"asc";
+      else { state.col=th.dataset.col; state.dir="asc"; }
+      state.page = 1;
+      renderWinsTab(allWins, dealType, prefix);
+    };
+  });
+}
+
+// ── Drill-down ────────────────────────────────────────────────────────────────
 function openDrill(cat, currentOpps) {
   const catOpps = currentOpps.filter(o => o.cat === cat);
   window._drillOpps = catOpps;
@@ -758,83 +804,74 @@ function openDrill(cat, currentOpps) {
   panel.style.display = "block";
   setTimeout(() => panel.scrollIntoView({ behavior:"smooth", block:"nearest" }), 50);
 }
-
 document.getElementById("drillClose").addEventListener("click", () => {
   document.getElementById("drillPanel").style.display = "none";
   selectedCat = null;
   document.querySelectorAll(".rrow").forEach(r => r.classList.remove("selected"));
 });
 
-// ── Main render ────────────────────────────────────────────────────────────────
+// ── Main render ───────────────────────────────────────────────────────────────
 function renderView(data) {
-  const { opps } = data;
+  const { opps, wins = [] } = data;
 
   const allNums = (opps||[]).map(o=>monthToNum(o.month)).filter(n=>n>0);
-  const maxNum = Math.max(...allNums);
-  const minNum = Math.min(...allNums);
+  const maxNum  = Math.max(...allNums);
+  const minNum  = Math.min(...allNums);
 
   let currentFrom, currentTo, priorFrom, priorTo, hasPrior;
   if (activeMonths===0) { currentFrom=minNum; currentTo=maxNum; hasPrior=false; }
   else { currentTo=maxNum; currentFrom=maxNum-activeMonths+1; priorTo=currentFrom-1; priorFrom=priorTo-3+1; hasPrior=priorFrom>=minNum||priorTo>=minNum; }
 
-  const currentOpps = filterOpps(opps, currentFrom, currentTo);
-  const priorOpps   = hasPrior ? filterOpps(opps, priorFrom, priorTo) : [];
-  const catCounts   = countCats(currentOpps);
-  const monthCounts = countMonths(currentOpps);
-  const priorCounts = countCats(priorOpps);
-  const currentMonthCount = activeMonths>0 ? activeMonths : (maxNum-minNum+1||1);
-  const priorMonthCount   = hasPrior ? (priorTo-priorFrom+1) : 0;
+  const currentOpps   = (opps||[]).filter(o => { const n=monthToNum(o.month); return n>=currentFrom&&n<=currentTo; });
+  const priorOpps     = hasPrior ? (opps||[]).filter(o=>{ const n=monthToNum(o.month); return n>=priorFrom&&n<=priorTo; }) : [];
+  const catCounts     = countCats(currentOpps);
+  const monthCounts   = countMonths(currentOpps);
+  const priorCounts   = countCats(priorOpps);
+  const currentMC     = activeMonths>0 ? activeMonths : (maxNum-minNum+1||1);
+  const priorMC       = hasPrior ? (priorTo-priorFrom+1) : 0;
 
-  // Search note
-  const searchedOpps = searchQuery ? currentOpps.filter(o=>oppMatchesSearch(o,searchQuery)) : currentOpps;
-  const noteEl = document.getElementById("searchNote");
-  noteEl.textContent = searchQuery ? `${searchedOpps.length} deal${searchedOpps.length!==1?"s":""} match "${searchQuery}"` : "";
-
+  const searchedOpps  = searchQuery ? currentOpps.filter(o=>oppMatchesSearch(o,searchQuery)) : currentOpps;
+  document.getElementById("searchNote").textContent = searchQuery ? `${searchedOpps.length} deal${searchedOpps.length!==1?"s":""} match "${searchQuery}"` : "";
   const total = searchQuery ? searchedOpps.length : currentOpps.length;
 
-  // Period note
   const pn = document.getElementById("period-note");
-  if (activeMonths>0 && hasPrior) pn.textContent=`Comparing to ${numToMonth(priorFrom)} – ${numToMonth(priorTo)} avg`;
+  if (activeMonths>0&&hasPrior) pn.textContent=`Comparing to ${numToMonth(priorFrom)} – ${numToMonth(priorTo)} avg`;
   else if (activeMonths>0) pn.textContent="Not enough prior data for comparison";
   else pn.textContent="";
 
-  const windowLabel = activeMonths===0 ? "All Time" : `Last ${activeMonths}M`;
-  document.getElementById("reasons-title").innerHTML = `Loss Reasons <span>— ${windowLabel}</span>`;
-  document.getElementById("vol-title").innerHTML     = `Volume by Month <span>— ${windowLabel}</span>`;
-  document.getElementById("mix-title").innerHTML     = `Reason Mix Over Time <span>— ${windowLabel}</span>`;
+  const wl = activeMonths===0?"All Time":`Last ${activeMonths}M`;
+  document.getElementById("reasons-title").innerHTML=`Loss Reasons <span>— ${wl}</span>`;
+  document.getElementById("vol-title").innerHTML    =`Volume by Month <span>— ${wl}</span>`;
+  document.getElementById("mix-title").innerHTML    =`Reason Mix Over Time <span>— ${wl}</span>`;
 
-  const monthSorted = Object.keys(monthCounts).sort((a,b)=>monthToNum(a)-monthToNum(b));
-  const catSorted   = Object.entries(catCounts).sort((a,b)=>b[1]-a[1]);
+  const monthSorted     = Object.keys(monthCounts).sort((a,b)=>monthToNum(a)-monthToNum(b));
+  const catSorted       = Object.entries(catCounts).sort((a,b)=>b[1]-a[1]);
   const catSortedSearch = Object.entries(countCats(searchedOpps)).sort((a,b)=>b[1]-a[1]);
 
-  // ── KPIs ──────────────────────────────────────────────────────────────────
+  // KPIs
   const top1=catSortedSearch[0], top2=catSortedSearch[1];
   const latestM=monthSorted[monthSorted.length-1]||"—";
   const latestC=monthCounts[latestM]||0;
-  const priorTotal=priorOpps.length;
-
   function kpiDelta(cur,pr,pm) {
     if (!hasPrior||pm===0) return "";
     const avg=pr/pm; if(avg===0) return "";
-    const pct=Math.round(((cur/(currentMonthCount||1))-avg)/avg*100);
+    const pct=Math.round(((cur/(currentMC||1))-avg)/avg*100);
     if(Math.abs(pct)<1) return `<div class="kdelta flat">— no change</div>`;
     return pct>0?`<div class="kdelta up">↑ ${pct}% vs prior 3M avg</div>`:`<div class="kdelta down">↓ ${Math.abs(pct)}% vs prior 3M avg</div>`;
   }
-
-  document.getElementById("kpis").innerHTML = [
-    { lbl:"Total Losses", val:total, sub:activeMonths>0?`in last ${activeMonths} months`:"all time", col:"#1E1D1A", big:true, delta:kpiDelta(total,priorTotal,priorMonthCount) },
+  document.getElementById("kpis").innerHTML=[
+    { lbl:"Total Losses", val:total, sub:activeMonths>0?`in last ${activeMonths} months`:"all time", col:"#1E1D1A", big:true, delta:kpiDelta(total,priorOpps.length,priorMC) },
     { lbl:"#1 Reason", val:top1?.[0]||"—", sub:`${top1?.[1]||0} deals · ${top1?Math.round(top1[1]/total*100):0}%`, col:COLOURS[top1?.[0]]||"#1E1D1A", delta:"" },
     { lbl:"#2 Reason", val:top2?.[0]||"—", sub:`${top2?.[1]||0} deals · ${top2?Math.round(top2[1]/total*100):0}%`, col:COLOURS[top2?.[0]]||"#1E1D1A", delta:"" },
     { lbl:"Latest Month", val:latestM, sub:`${latestC} losses`, col:"#2ECBA8", delta:"" },
   ].map(k=>`<div class="kpi" style="--kpi-col:${k.col}"><div class="klbl">${k.lbl}</div><div class="kval${k.big?" big":""}">${k.val}</div><div class="ksub">${k.sub}</div>${k.delta}</div>`).join("");
 
-  // ── Reason bars ───────────────────────────────────────────────────────────
+  // Reason bars
   const maxCnt=catSorted[0]?.[1]||1;
   const pm3=hasPrior?(priorTo-priorFrom+1):0;
-
-  document.getElementById("rbars").innerHTML = catSorted.map(([name,cnt])=>{
+  document.getElementById("rbars").innerHTML=catSorted.map(([name,cnt])=>{
     const pa=pm3>0?(priorCounts[name]||0)/pm3:0;
-    const ca=cnt/(currentMonthCount||1);
+    const ca=cnt/(currentMC||1);
     let dh;
     if (!hasPrior) dh=`<span class="rdelta na">—</span>`;
     else if (pa===0&&cnt===0) dh=`<span class="rdelta flat">—</span>`;
@@ -847,54 +884,49 @@ function renderView(data) {
       <span class="rcnt">${cnt}</span>${dh}
     </div>`;
   }).join("");
+  document.getElementById("comp-legend").style.display=hasPrior?"flex":"none";
 
-  document.getElementById("comp-legend").style.display = hasPrior?"flex":"none";
-
-  // Wire bar clicks
   document.querySelectorAll(".rrow[data-cat]").forEach(row => {
     row.addEventListener("click", () => {
-      const cat = row.dataset.cat;
-      if (selectedCat===cat) {
-        selectedCat=null;
-        document.getElementById("drillPanel").style.display="none";
-        row.classList.remove("selected");
-      } else {
-        selectedCat=cat;
-        document.querySelectorAll(".rrow").forEach(r=>r.classList.remove("selected"));
-        row.classList.add("selected");
-        openDrill(cat, currentOpps);
-      }
+      const cat=row.dataset.cat;
+      if (selectedCat===cat) { selectedCat=null; document.getElementById("drillPanel").style.display="none"; row.classList.remove("selected"); }
+      else { selectedCat=cat; document.querySelectorAll(".rrow").forEach(r=>r.classList.remove("selected")); row.classList.add("selected"); openDrill(cat,currentOpps); }
     });
   });
   if (selectedCat) openDrill(selectedCat, currentOpps);
 
-  // ── Charts ────────────────────────────────────────────────────────────────
+  // Charts
   if (chartMonth) chartMonth.destroy();
-  chartMonth = new Chart(document.getElementById("monthChart"), { type:"bar", data:{ labels:monthSorted, datasets:[{ data:monthSorted.map(m=>monthCounts[m]||0), backgroundColor:"#6B7FD422", borderColor:"#6B7FD4", borderWidth:1.5, borderRadius:5, hoverBackgroundColor:"#6B7FD444" }]}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:tip }, scales:sc } });
+  chartMonth=new Chart(document.getElementById("monthChart"),{type:"bar",data:{labels:monthSorted,datasets:[{data:monthSorted.map(m=>monthCounts[m]||0),backgroundColor:"#6B7FD422",borderColor:"#6B7FD4",borderWidth:1.5,borderRadius:5,hoverBackgroundColor:"#6B7FD444"}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tip},scales:sc}});
 
   const cmm={};
   currentOpps.forEach(o=>{ if(!o.cat||!o.month||o.month==="Unknown") return; if(!cmm[o.cat]) cmm[o.cat]={}; cmm[o.cat][o.month]=(cmm[o.cat][o.month]||0)+1; });
   if (chartStack) chartStack.destroy();
-  chartStack = new Chart(document.getElementById("stackChart"), { type:"bar", data:{ labels:monthSorted, datasets:catSorted.map(([name])=>({ label:name, data:monthSorted.map(m=>cmm[name]?.[m]||0), backgroundColor:(COLOURS[name]||"#C8C4BD")+"99", borderWidth:0, borderRadius:2 }))}, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:"bottom", labels:{ boxWidth:10, boxHeight:10, padding:14, usePointStyle:true, pointStyle:"rect", font:{size:11} } }, tooltip:tip }, scales:{ x:{...sc.x,stacked:true}, y:{...sc.y,stacked:true} } } });
+  chartStack=new Chart(document.getElementById("stackChart"),{type:"bar",data:{labels:monthSorted,datasets:catSorted.map(([name])=>({label:name,data:monthSorted.map(m=>cmm[name]?.[m]||0),backgroundColor:(COLOURS[name]||"#C8C4BD")+"99",borderWidth:0,borderRadius:2}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{boxWidth:10,boxHeight:10,padding:14,usePointStyle:true,pointStyle:"rect",font:{size:11}}},tooltip:tip},scales:{x:{...sc.x,stacked:true},y:{...sc.y,stacked:true}}}});
 
-  // ── Tables ────────────────────────────────────────────────────────────────
-  window._dealsOpps = currentOpps;
+  // Lost tables
+  window._dealsOpps=currentOpps;
   renderDealsTable(currentOpps);
-  renderSummaryTable(currentOpps, "owner", "ownerBody", "ownerTable", { col:ownerSortCol, dir:ownerSortDir });
-  renderSummaryTable(currentOpps, "source", "sourceBody", "sourceTable", { col:sourceSortCol, dir:sourceSortDir });
+  renderSummaryTable(currentOpps,"owner","ownerBody","ownerTable",{col:ownerSortCol,dir:ownerSortDir});
+  renderSummaryTable(currentOpps,"source","sourceBody","sourceTable",{col:sourceSortCol,dir:sourceSortDir});
 
-  // ── Methodology ───────────────────────────────────────────────────────────
+  // Methodology
   renderMethodology();
+
+  // Wins tabs
+  renderWinsTab(wins, "renewal", "renewals");
+  renderWinsTab(wins, "newbiz",  "newbiz");
+  renderWinsTab(wins, "upsell",  "upsell");
 }
 
-// ── Full load ─────────────────────────────────────────────────────────────────
+// ── Load ──────────────────────────────────────────────────────────────────────
 function render(data) {
   const d = new Date(data.updatedAt);
-  document.getElementById("ts").textContent = `Updated ${d.getDate()} ${d.toLocaleString("en-GB",{month:"short"})} at ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+  document.getElementById("ts").textContent=`Updated ${d.getDate()} ${d.toLocaleString("en-GB",{month:"short"})} at ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
   allData = data;
   renderView(data);
-  document.getElementById("loading").style.display = "none";
-  document.getElementById("content").style.display = "block";
+  document.getElementById("loading").style.display="none";
+  document.getElementById("content").style.display="block";
 }
 
 async function load() {
@@ -905,9 +937,9 @@ async function load() {
     if (data.error) throw new Error(data.error);
     render(data);
   } catch(e) {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("err").style.display = "block";
-    document.getElementById("err").innerHTML = `<strong>⚠️ Could not load dashboard</strong><br><br>${e.message}<br><br><small>Check: Worker URL · SLACK_TOKEN · Bot is in #closedlost</small>`;
+    document.getElementById("loading").style.display="none";
+    document.getElementById("err").style.display="block";
+    document.getElementById("err").innerHTML=`<strong>⚠️ Could not load dashboard</strong><br><br>${e.message}<br><br><small>Check: Worker URL · SLACK_TOKEN · Bot is in both channels</small>`;
     console.error(e);
   }
 }
