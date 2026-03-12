@@ -197,8 +197,6 @@ body {
 .method-signals-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 7px; }
 .signal-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .signal-tag { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: var(--soft-white); color: var(--text-mid); border: 1px solid var(--border); font-weight: 500; }
-.method-rule { margin-top: 12px; padding: 10px 14px; background: var(--soft-white); border-radius: 8px; font-size: 11px; color: var(--text-mid); line-height: 1.6; border-left: 3px solid var(--mc-col, var(--fog)); }
-.method-rule strong { color: var(--warm-black); }
 
 /* ── Search highlight ── */
 mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px; }
@@ -207,15 +205,6 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
 .comp-legend { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
 .comp-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-light); }
 .swatch { width: 10px; height: 10px; border-radius: 2px; }
-
-/* ── AI Insights ── */
-.insights { display: grid; gap: 12px; }
-.insight { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; border-left: 4px solid var(--ins-col, var(--fog)); transition: transform .15s; }
-.insight:hover { transform: translateX(3px); }
-.itag { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ins-col, var(--text-light)); margin-bottom: 8px; }
-.insight h4 { font-size: 15px; font-weight: 700; color: var(--warm-black); margin-bottom: 8px; line-height: 1.3; }
-.insight p  { font-size: 13px; color: var(--text-mid); line-height: 1.7; font-weight: 400; }
-.no-insights { text-align:center; padding: 48px 20px; color: var(--text-light); font-size: 13px; }
 
 /* ── Footer ── */
 .footer { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 36px; }
@@ -227,7 +216,7 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
   <div class="hdr">
     <div>
       <h1>Closed / Lost Analysis</h1>
-      <p>Live from Slack #closedlost · AI insights by Claude</p>
+      <p>Live from Slack #closedlost</p>
     </div>
     <div class="live"><span class="dot"></span><span id="ts">Loading…</span></div>
   </div>
@@ -263,7 +252,6 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
       <div class="tab" data-tab="owner">By Owner</div>
       <div class="tab" data-tab="source">By Source</div>
       <div class="tab" data-tab="methodology">Methodology</div>
-      <div class="tab" data-tab="insights">AI Insights <span style="font-size:10px;opacity:.5">(beta)</span></div>
       <div class="tab" data-tab="raquel">Raquel's Thoughts</div>
     </div>
 
@@ -381,18 +369,7 @@ mark { background: #F5C64255; color: inherit; border-radius: 2px; padding: 0 1px
 
     <!-- ── METHODOLOGY TAB ── -->
     <div class="tab-panel" id="tab-methodology">
-      <div class="card" style="margin-bottom:20px">
-        <div class="card-title">How We Classify Loss Reasons</div>
-        <p style="font-size:13px;color:var(--text-mid);line-height:1.8;max-width:720px">
-          Each closed/lost deal is manually tagged with a primary reason by the owner in Slack. The categories below represent the taxonomy used to classify deals. A deal is assigned the <strong>primary contributing factor</strong> — when multiple factors exist, the one that most directly prevented the close is used. This is reviewed by Raquel on a monthly basis to keep categorisation consistent.
-        </p>
-      </div>
       <div class="method-grid" id="methodGrid"></div>
-    </div>
-
-    <!-- ── AI INSIGHTS TAB ── -->
-    <div class="tab-panel" id="tab-insights">
-      <div class="insights" id="insights"></div>
     </div>
 
     <!-- ── RAQUEL'S THOUGHTS TAB ── -->
@@ -458,65 +435,54 @@ const METHODOLOGY = [
     cat: "Contact Unresponsive",
     desc: "The deal had active engagement — typically a demo or discovery call — but the prospect stopped responding to follow-up. No formal rejection was given; the deal simply went dark. This is distinct from 'Not in Buying Cycle' in that there was genuine initial interest and motion.",
     signals: ["Ghosted after demo", "No reply to 3+ follow-ups", "Went dark post-discovery", "Unresponsive to emails & calls"],
-    rule: "<strong>Use this when:</strong> The prospect was engaged, then stopped responding without explaining why. If they gave a reason (budget, timing, product), use the more specific category instead."
   },
   {
     cat: "Pricing",
     desc: "The deal was lost primarily because Signal's price exceeded the prospect's budget, or a competitor offered comparable functionality at a materially lower price point. Includes cases where procurement blocked a deal due to cost, and cases where budget was cut mid-cycle.",
     signals: ["Went with cheaper competitor", "Budget cut / frozen", "Couldn't justify ROI at price", "Procurement blocked", "Competitor undercutting"],
-    rule: "<strong>Use this when:</strong> Price was the decisive factor cited by the prospect. If the competitor won on features as well as price, use 'Platform / Fit' instead."
   },
   {
     cat: "Use Case Mismatch",
     desc: "The prospect's core use case doesn't align with what Signal is designed to do. This typically applies to accounts that came in through broad marketing channels with adjacent but non-core needs — e.g. pure content marketing, internal comms, or social media management — rather than media intelligence and earned media tracking.",
     signals: ["No PR/comms function", "Wrong buying persona", "Social-only use case", "Internal comms need", "Marketing content only"],
-    rule: "<strong>Use this when:</strong> Signal could technically be used but the account's primary need falls outside Signal's ICP. Flag these for marketing lead scoring review."
   },
   {
     cat: "Not in Buying Cycle",
     desc: "The prospect has genuine interest in Signal and recognises the value, but they are not in an active buying cycle — typically because a contract with a current vendor hasn't expired, Q1 budget planning hasn't completed, or they explicitly said to re-engage in a future quarter. These are timing losses, not rejections.",
     signals: ["Contract not up until Q3/Q4", "Budget not allocated yet", "Come back in 6 months", "In planning mode", "Board hasn't approved"],
-    rule: "<strong>Use this when:</strong> The prospect explicitly gave a timing reason. Add to re-engagement list with a specific follow-up date."
   },
   {
     cat: "Org Change",
     desc: "The deal was disrupted by an organisational event that was out of the prospect's hands — a restructure, acquisition, budget reallocation, or the departure of the champion contact. No product or price objection was raised; the deal simply lost its internal sponsor or momentum.",
     signals: ["Contact left the company", "Team restructure", "Company acquired/merged", "New leadership froze spend", "Champion moved roles"],
-    rule: "<strong>Use this when:</strong> An org-level event killed the deal, not a product or commercial objection. Symptomatic of single-threaded deals — note as a coaching point."
   },
   {
     cat: "Content / Product Gaps",
     desc: "Signal's content coverage, data partnerships, or product capabilities fell short of what the prospect required. Common gaps include: social media firehose data, specific publisher partnerships (e.g. NewsCorp, full-text WSJ/Barron's), or a methodology mismatch where Signal's risk or relevance scoring didn't fit the prospect's framework.",
     signals: ["Missing social firehose", "No NewsCorp/WSJ full text", "Methodology mismatch", "Coverage gap in region/topic", "API limitations"],
-    rule: "<strong>Use this when:</strong> The prospect explicitly cited a content or product limitation as the dealbreaker. Tag the specific gap (publisher, data type, region) in notes — these feed the product roadmap."
   },
   {
     cat: "Engagement",
     desc: "The prospect showed interest at the top of the funnel but never developed into a qualified opportunity with active two-way engagement. Typically these are deals where the prospect attended a webinar, downloaded content, or requested a demo but never committed to a real discovery process. Different from 'Contact Unresponsive' in that there was never a substantive conversation.",
     signals: ["Never progressed past MQL", "Attended webinar, no follow-through", "Demo no-show", "Low intent from the start", "Inbound with no real need"],
-    rule: "<strong>Use this when:</strong> The deal never became genuinely qualified. If it was qualified then went dark, use 'Contact Unresponsive'."
   },
   {
     cat: "Platform / Fit",
     desc: "The prospect evaluated Signal against competitors and chose an alternative based on platform capabilities, UX, integrations, or technical fit — not primarily on price. This includes cases where an incumbent vendor retained the account because switching costs were too high.",
     signals: ["Chose competitor on features", "Integration requirements unmet", "UI/UX preference for competitor", "Staying with incumbent", "Technical requirements gap"],
-    rule: "<strong>Use this when:</strong> The competitor was chosen for reasons beyond price. Note which competitor won and why — this feeds competitive intelligence."
   },
   {
     cat: "Agency / External",
     desc: "The deal was lost due to a decision made at the agency, holding company, or parent organisation level, rather than by the direct contact. This includes cases where a preferred vendor was mandated by the holding group, or where an agency relationship precluded a direct Signal contract.",
     signals: ["Holding group mandated vendor", "Agency preferred list", "Parent company decision", "Procurement preferred supplier list", "Agency managed relationship"],
-    rule: "<strong>Use this when:</strong> The individual contact was interested but an external or parent-level decision prevented the close."
   },
   {
     cat: "Other",
     desc: "Used sparingly for deals that genuinely don't fit any of the above categories, or where insufficient information was logged to classify accurately. Over-use of 'Other' is a data quality flag — if this category is frequently used by a rep, it should be reviewed in the monthly pipeline call.",
     signals: ["Unclear reason given", "No notes logged", "Doesn't fit standard taxonomy", "Personal/relationship factor", "One-off circumstance"],
-    rule: "<strong>Use this as a last resort.</strong> If you're unsure between two categories, pick the one that most directly prevented the close. Use notes to explain."
   },
 ];
 
-const urgencyColour = { high:"#F03545", medium:"#F5852A", low:"#A8A49E" };
 const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 Chart.defaults.font.family = "'Poppins', sans-serif";
@@ -761,27 +727,19 @@ function renderSummaryTable(opps, groupField, bodyId, tableId, sortState) {
 }
 
 // ── Methodology cards ─────────────────────────────────────────────────────────
-function renderMethodology(currentOpps) {
-  const counts = countCats(currentOpps);
-  const total = currentOpps.length;
+function renderMethodology() {
   document.getElementById("methodGrid").innerHTML = METHODOLOGY.map(m => {
     const col = COLOURS[m.cat]||"#C8C4BD";
-    const cnt = counts[m.cat]||0;
-    const pct = total > 0 ? Math.round(cnt/total*100) : 0;
     return `<div class="method-card" style="--mc-col:${col}">
       <div class="method-card-header">
-        <div>
-          <div class="method-cat-name">${m.cat}</div>
-          <div style="font-size:11px;color:var(--text-light);margin-top:3px">${cnt} deal${cnt!==1?"s":""} · ${pct}% of losses</div>
-        </div>
-        <span class="method-badge" style="background:${col}">${pct}%</span>
+        <div class="method-cat-name">${m.cat}</div>
+        <span class="method-badge" style="background:${col}">●</span>
       </div>
       <p class="method-desc">${m.desc}</p>
       <div class="method-signals">
         <div class="method-signals-title">Common signals</div>
         <div class="signal-tags">${m.signals.map(s=>`<span class="signal-tag">${s}</span>`).join("")}</div>
       </div>
-      <div class="method-rule">${m.rule}</div>
     </div>`;
   }).join("");
 }
@@ -926,19 +884,7 @@ function renderView(data) {
   renderSummaryTable(currentOpps, "source", "sourceBody", "sourceTable", { col:sourceSortCol, dir:sourceSortDir });
 
   // ── Methodology ───────────────────────────────────────────────────────────
-  renderMethodology(currentOpps);
-
-  // ── AI Insights ───────────────────────────────────────────────────────────
-  const insightsEl = document.getElementById("insights");
-  const insights = data.aiInsights;
-  if (insights && insights.length) {
-    insightsEl.innerHTML = insights.map(ins=>{
-      const col=COLOURS[ins.category]||urgencyColour[ins.urgency]||"#6B7FD4";
-      return `<div class="insight" style="--ins-col:${col}"><div class="itag">${ins.category} · ${ins.urgency} priority</div><h4>${ins.title}</h4><p>${ins.body}</p></div>`;
-    }).join("");
-  } else {
-    insightsEl.innerHTML=`<div class="no-insights">AI insights unavailable — set <strong>ANTHROPIC_API_KEY</strong> in your Worker environment.</div>`;
-  }
+  renderMethodology();
 }
 
 // ── Full load ─────────────────────────────────────────────────────────────────
